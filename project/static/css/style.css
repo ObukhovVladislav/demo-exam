@@ -1,0 +1,9 @@
+.bg-dark {
+    background-color: #fc8f01!important;
+}
+.nav-link:hover{
+    color: #eab33c!important;
+}
+.nav-link{
+    color: white!important;
+}

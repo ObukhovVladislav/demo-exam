@@ -1,5 +1,20 @@
-from django.shortcuts import render
+from django.contrib.auth.views import LoginView, LogoutView
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
+
+from authapp.forms import RegisterForm, LoginForm
 
 
-def login(request):
-    pass
+class Register(CreateView):
+    form_class = RegisterForm
+    success_url = reverse_lazy('auth:login')
+    template_name = 'authapp/register.html'
+
+
+class Login(LoginView):
+    form_class = LoginForm
+    template_name = 'authapp/login.html'
+
+
+class Logout(LogoutView):
+    success_url = reverse_lazy('auth:login')

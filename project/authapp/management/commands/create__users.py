@@ -9,5 +9,5 @@ class Command(BaseCommand):
         while i <= 9:
             ExamUser.objects.create_user(f'user{i + 1}', f'user{i + 1}@gmail.com', password='password')
             i += 1
-        ExamUser.objects.create_superuser('exam', 'exam@gmail.com', password='pass')
+        ExamUser.objects.create_superuser('admin', 'admin@gmail.com', password='admin11')
         print('Пользователи и супер пользователь созданы')

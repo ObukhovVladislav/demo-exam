@@ -7,7 +7,7 @@ from authapp.models import ExamUser
 class ExamUserAdmin(UserAdmin):
     fieldsets = (
         (None, {'fields': ('login', 'password')}),
-        ('Personal info', {'fields': ('first_name', 'last_name', 'email')}),
+        ('Personal info', {'fields': ('name', 'surname', 'email')}),
         ('Permissions', {
             'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions'),
         }),
@@ -20,8 +20,8 @@ class ExamUserAdmin(UserAdmin):
         }),
     )
 
-    list_display = ('login', 'email', 'first_name', 'last_name', 'is_staff')
-    search_fields = ('login', 'first_name', 'last_name', 'email')
+    list_display = ('login', 'email', 'name', 'surname', 'is_staff')
+    search_fields = ('login', 'name', 'surname', 'email')
     ordering = ('login',)
 
 

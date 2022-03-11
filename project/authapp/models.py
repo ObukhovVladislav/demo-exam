@@ -36,8 +36,11 @@ class ExamUserManager(BaseUserManager):
 
 
 class ExamUser(AbstractUser):
-    username = None
     objects = ExamUserManager()
+
+    username = None
+    first_name = None
+    last_name = None
 
     login = models.CharField(
         'login',
@@ -49,8 +52,14 @@ class ExamUser(AbstractUser):
             'unique': "A user with that login already exists.",
         },
     )
-    birthday = models.DateField(null=True)
-    avatar = models.ImageField(upload_to='avatars',
-                               blank=True)
-
     USERNAME_FIELD = 'login'
+
+    name = models.CharField('name', max_length=30)
+    surname = models.CharField('surname', max_length=50)
+    patronymic = models.CharField('patronymic', max_length=50, blank=True)
+    email = models.EmailField('email address')
+    rules = models.BooleanField('rules', default=True)
+
+    def get_full_name(self):
+        full_name = '%s %s' % (self.name, self.surname)
+        return full_name.strip()
